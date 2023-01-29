@@ -11,6 +11,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "ngx-simple-image-viewer": [
+        "dist/ngx-simple-image-viewer/ngx-simple-image-viewer",
+        "dist/ngx-simple-image-viewer"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

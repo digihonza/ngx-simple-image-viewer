@@ -108,6 +108,37 @@
           }
         }
       }
+    },
+    "ngx-simple-image-viewer": {
+      "projectType": "library",
+      "root": "projects/ngx-simple-image-viewer",
+      "sourceRoot": "projects/ngx-simple-image-viewer/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-simple-image-viewer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-simple-image-viewer/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-simple-image-viewer/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-simple-image-viewer/src/test.ts",
+            "tsConfig": "projects/ngx-simple-image-viewer/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-simple-image-viewer/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-simple-image-viewer-app"
