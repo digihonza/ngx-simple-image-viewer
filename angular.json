@@ -77,6 +77,13 @@
             "production": {
               "browserTarget": "ngx-simple-image-viewer-app:build:production"
             },
+            "options": {
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "vendor": true
+              }
+            },
             "development": {
               "browserTarget": "ngx-simple-image-viewer-app:build:development"
             }
