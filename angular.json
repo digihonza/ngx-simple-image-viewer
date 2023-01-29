@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-simple-image-viewer": {
+    "ngx-simple-image-viewer-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-simple-image-viewer",
+            "outputPath": "dist/ngx-simple-image-viewer-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-simple-image-viewer:build:production"
+              "browserTarget": "ngx-simple-image-viewer-app:build:production"
             },
             "development": {
-              "browserTarget": "ngx-simple-image-viewer:build:development"
+              "browserTarget": "ngx-simple-image-viewer-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-simple-image-viewer:build"
+            "browserTarget": "ngx-simple-image-viewer-app:build"
           }
         },
         "test": {
@@ -110,5 +110,5 @@
       }
     }
   },
-  "defaultProject": "ngx-simple-image-viewer"
+  "defaultProject": "ngx-simple-image-viewer-app"
 }
