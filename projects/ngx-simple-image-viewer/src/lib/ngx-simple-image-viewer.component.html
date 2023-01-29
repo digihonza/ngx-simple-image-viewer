@@ -1,0 +1,22 @@
+<div class="control-panel">
+    <div class="left">
+        <button (click)="rotateLeft()" title="Otočit vlevo"><i class="pi pi-undo rotate-left-icon"></i></button>
+        <button (click)="rotateRight()" title="Otočit vpravo"><i class="pi pi-refresh rotate-right-icon"></i></button>
+        <button (click)="scaleUp()" title="Zvětšit"><i class="pi pi-plus"></i></button>
+        <button (click)="scaleDown()" title="Zmenšit"><i class="pi pi-minus"></i></button>
+        <button (click)="revert()" title="Obnovit"><i class="pi pi-refresh"></i></button>
+    </div>
+    <div>
+        <a [href]="src" [download]="fileName" title="Stáhnout"><i class="pi pi-download"></i></a>
+    </div>
+    
+</div>
+<div class="image-container">
+    <img #image [src]="src" [alt]="fileName"
+    draggable="false"
+    (mousedown)="activateDrag($event)"
+    (mouseup)="deactivateDrag($event)"
+    (mousemove)="onMouseMove($event)"
+    (mouseleave)="deactivateDrag($event)"
+    (wheel)="onMouseWheel($event)">
+</div>
