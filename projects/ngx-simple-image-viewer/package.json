@@ -1,0 +1,22 @@
+{
+  "name": "ngx-simple-image-viewer",
+  "version": "0.1.5",
+  "description": "Simple image viewer for Angular which enables image rotation and zoom.",
+  "author": {
+    "name": "Jan Piskacek",
+    "email": "piskacekjan@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digihonza/ngx-simple-image-viewer"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^13.3.0",
+    "@angular/core": "^13.3.0",
+    "primeicons": "^5.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
