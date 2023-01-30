@@ -1,42 +1,34 @@
-import { Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'ngx-simple-image-viewer',
   templateUrl: './ngx-simple-image-viewer.component.html',
   styleUrls: ['./ngx-simple-image-viewer.component.scss']
 })
-export class NgxSimpleImageViewerComponent implements OnChanges, OnDestroy {
-  private readonly _destroying$ = new Subject<void>();
+export class NgxSimpleImageViewerComponent implements OnChanges {
 
   @Input() fileName: string = '';
-  @Input() fileObservable: Observable<Blob> | undefined;
+  @Input() src: string | undefined;
 
   @ViewChild('image') image: ElementRef | undefined;
-
-  src: any;
 
   private rotationAngle = 0;
   private scale = 1;
   private translateX = 0;
   private translateY = 0;
   
-  constructor(private sanitizer: DomSanitizer, private readonly renderer: Renderer2) { }
+  constructor(private readonly renderer: Renderer2) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // TODO: not sure this is doing what it's supposed to. Needs looking into.
-    if (changes['fileObservable']) {
-      this.populateSrc();
+    if (changes['src']) {
+      this.clearPreviousStyles();
     }
   }
 
-  // TODO: Look into some kind of caching or a better implementation
-  private populateSrc(): void {
-    this.fileObservable?.pipe(takeUntil(this._destroying$)).subscribe(b => {
-      const url = URL.createObjectURL(b);
-      this.src = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    })
+  private clearPreviousStyles(): void {
+    if (this.image?.nativeElement) {
+      this.revert();
+    }
   }
 
   scaleUp(): void {
@@ -112,10 +104,4 @@ export class NgxSimpleImageViewerComponent implements OnChanges, OnDestroy {
   private transformImage(): void {
     this.renderer.setStyle(this.image?.nativeElement, 'transform', `translate(${this.translateX}px, ${this.translateY}px) rotate(${this.rotationAngle}deg) scale(${this.scale})` );
   }
-
-  ngOnDestroy(): void {
-    this._destroying$.next(undefined);
-    this._destroying$.complete();
-  }
-
 }
