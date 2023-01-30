@@ -12,11 +12,13 @@
     
 </div>
 <div class="image-container">
-    <img #image [src]="src" [alt]="fileName"
-    draggable="false"
-    (mousedown)="activateDrag($event)"
-    (mouseup)="deactivateDrag($event)"
-    (mousemove)="onMouseMove($event)"
-    (mouseleave)="deactivateDrag($event)"
-    (wheel)="onMouseWheel($event)">
+    <img #image
+        [src]="src"
+        [alt]="fileName"
+        draggable="false"
+        (mousedown)="activateDrag($event)"
+        (mouseup)="deactivateDrag($event)"
+        (mousemove)="onMouseMove($event)"
+        (mouseleave)="deactivateDrag($event)"
+        (wheel)="onMouseWheel($event)">
 </div>
