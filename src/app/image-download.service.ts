@@ -10,6 +10,6 @@ export class ImageDownloadService {
   constructor(private http: HttpClient) { }
 
   downloadFileBlob(url: string): Observable<Blob> {
-    return this.http.get<Blob>(url, {responseType: 'blob' as 'json'})
+    return this.http.get<Blob>(url, {responseType: 'blob' as 'json'});
   }
 }
